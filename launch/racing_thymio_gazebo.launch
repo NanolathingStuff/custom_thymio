@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!-- Launch with:
+roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=$WORLD_NAME type:=$CONTROLLER_NAME.py 
+es CONTROLLER_NAME: controller_straight.py ; WORLD_NAME: circuit1 -->
+<launch>
+
+  <env name="GAZEBO_MODEL_PATH" value="$(find thymio_description)/..:$(find thymioid_description)/..:$(find custom_thymio):$(optenv GAZEBO_MODEL_PATH)" />
+  <env name="SVGA_VGPU10" value="0"/>
+  <arg name="gui" default="true"/>
+  <arg name="name" default=""/>
+  <arg name="world" default="empty"/>
+
+  <include file="$(find custom_thymio)/launch/custom_world.launch">
+    <arg name="gui" value="$(arg gui)"/>
+    <arg name="headless" value="$(eval not arg('gui'))"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="world" value="$(arg world)"/>
+  </include>
+
+  <include file="$(find thymioid_description)/launch/gazebo_bringup.launch">
+    <arg name="name" value="$(arg name)"/>
+
+    <arg name="pose" value="-x 0 -y 0 -z 0"/>
+    <arg name="odom_max_rate" default="20.0"/>
+
+    <arg name="publish_ground_truth" default="true"/>
+    <arg name="ground_truth_frame_id" default="/world"/>
+    <arg name="ground_truth_frame_rate" default="30.0"/>
+
+    <arg name="left_wheel_friction" value="1"/>
+    <arg name="right_wheel_friction" value="1"/>
+
+    <arg name="camera_is_fixed" default="false"/>
+    <arg name="camera_pitch" default="0.2618"/>
+
+    <arg name="proximity_max_range" default="0.12"/>
+    <arg name="proximity_resolution" default="0.005"/>
+    <arg name="proximity_fov" default="0.3"/>
+
+  </include>
+
+  <!-- arguments are set via terminal and can have a default value -->
+    <arg name="robot_name" default="thymio10" />
+
+    <!-- nodes are exectued -->
+    <node pkg="custom_thymio" name="thymio_controller" type="$(arg type)" output="screen">
+        <!-- paramters must be set in the launchfile -->
+        <param name="robot_name" value="/$(arg robot_name)" />
+    </node>
+
+</launch>
