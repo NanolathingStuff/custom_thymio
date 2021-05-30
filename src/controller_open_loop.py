@@ -11,7 +11,7 @@ controller tougth to work on the circuit3 in launch/worlds folder
 roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=circuit3 type:=controller_open_loop.py
 """
 
-NUM_LAPS = 4
+NUM_LAPS = 3
 
 class ThymioController:
 
@@ -127,9 +127,10 @@ class ThymioController:
             msg=self.name + ' (%.3f, %.3f, %.3f) ' % printable_pose  # message
         )
 
-    def write_report(self, lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance):
+    def write_report(self, lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, time):
         print("writing report")
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/open_loop_report.txt", 'a+') # "w+")
+        f.write("lap{} concluded in time {},{} from the start \r\n".format(lap, time.secs, time.nsecs))
         f.write("Minimum distance left = {}, Maximum distance left = {} on lap{} \r\n".format(min_left_distance, max_left_distance, lap))
         f.write("Minimum distance right = {}, Maximum distance right = {} on lap{} \r\n".format(min_right_distance, max_right_distance, lap))
         f.close()
@@ -196,13 +197,14 @@ class ThymioController:
         # counter of how many times the loop has been executed
         slept = 0 
         lap = 1
+        now = rospy.get_rostime()
         while not rospy.is_shutdown() and lap < NUM_LAPS:
             # new lap
             if slept > 675:
-                self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance)
+                self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime() - now)
                 slept = 0
                 lap += 1
-                print(NUM_LAPS)
+                print(str(lap)+ '/'+str(NUM_LAPS))
                 # reset min,max at every lap
                 min_left_distance = min_right_distance = 50.0 # i don't know how to get max range of the sensor, so i harcode it here
                 max_left_distance = max_right_distance = 0.0
@@ -234,7 +236,7 @@ class ThymioController:
 
             slept += 1
 
-        self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance)
+        self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime() - now)
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/open_loop_report.txt", 'a+') 
         f.write(" \r\n")
         f.close()

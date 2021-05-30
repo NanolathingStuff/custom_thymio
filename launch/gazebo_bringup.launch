@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
-<!-- Launch with:
-roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=$WORLD_NAME type:=$CONTROLLER_NAME.py 
-es CONTROLLER_NAME: controller_straight.py ; WORLD_NAME: circuit1 -->
+
 <launch>
 
   <env name="GAZEBO_MODEL_PATH" value="$(find thymio_description)/..:$(find thymioid_description)/..:$(find custom_thymio):$(optenv GAZEBO_MODEL_PATH)" />
@@ -39,14 +37,4 @@ es CONTROLLER_NAME: controller_straight.py ; WORLD_NAME: circuit1 -->
     <arg name="proximity_fov" default="0.3"/>
 
   </include>
-
-    <!-- arguments are set via terminal and can have a default value -->
-    <arg name="robot_name" default="thymio10" />
-
-    <!-- nodes are exectued -->
-    <node pkg="custom_thymio" name="thymio_controller" type="$(arg type)" output="screen">
-        <!-- paramters must be set in the launchfile -->
-        <param name="robot_name" value="/$(arg robot_name)" />
-    </node>
 </launch>
-
