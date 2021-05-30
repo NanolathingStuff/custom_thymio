@@ -19,8 +19,9 @@ Controller list:
 Worlds list:
     - world_straight (world with a straight corridor directed 90 from the thymio)
     - straigth_test (world with a straight corridor directed as the thymio, walls are not at the same distance: used for test the sensors)
-    - circuit1 ()
-    - circuit2 ()
+    - circuit1 (a test cisrcuit world with random parts)
+    - circuit2 (a narrow loop circuit)
     - circuit3 (circular circuit done with 2 left turns)
     
 edit worlds with: $ "gazebo path/to/file.world"
+test if the odometry lap-detector [209-219 in almost all cntrollers] works
