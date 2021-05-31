@@ -219,7 +219,6 @@ class ThymioController:
                     f.close()
                     self.stop()
                     rospy.signal_shutdown("unexpected crash")
-                    break;
 
             if self.calculate_distance(self.pose, start_pose) < TRESHOLD:
                 """if near starting point: write report once and reset"""

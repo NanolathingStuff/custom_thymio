@@ -10,11 +10,13 @@ import math
 
 # TODO https://github.com/alessandro-giusti/teaching-notebooks/blob/master/robotics/04%20closedloopcontrol.ipynb
 NUM_LAPS = 3    # constant: number of laps
-SPEED = 0.5 
+SPEED = 0.45 
 TRESHOLD = 0.5    # constant: size lap beginning 
-KP = 0.4        # proportional constant
-KD = 0.3        # derivative constant 
-KI = 0.1
+KP = 0.6        # proportional constant
+KD = 0.25        # derivative constant 
+KI = 0.15
+MAX_TURN = 1.4
+e_SENSITIVITY = 0.05
 
 class ThymioController:
 
@@ -180,6 +182,8 @@ class ThymioController:
     
     def controller_commands(self):
         e = self.distance_left - self.distance_right
+        if abs(e) <= e_SENSITIVITY:
+            e = 0
         dt = 1/10 # 1 / rate
 
         if(self.last_e is not None):
@@ -189,7 +193,11 @@ class ThymioController:
         self.last_e = e
         self.sum_e += e * dt # NEW
         angle = KP * e + KD * derivative + KI * self.sum_e
-
+        if angle > MAX_TURN:
+            angle = MAX_TURN
+        if angle < -MAX_TURN:
+            angle = -MAX_TURN
+        rospy.loginfo("error: " + str(e) + " turning: " + str(angle) + "/" + str(KP * e + KD * derivative + KI * self.sum_e))
         velocity = Twist(linear=Vector3(
                 SPEED,  
                 .0,
@@ -205,7 +213,8 @@ class ThymioController:
     # TODO
     def run(self):
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/PID_report.txt", 'a+') # "w+")
-        f.write("using speed = {} \r\n".format(SPEED)) # TODO
+        f.write("using speed = {}; KP, KI, KD = {}; sensitivity = {}; maximum turn = {} \r\n".format(
+            SPEED, KP, KI, KD, e_SENSITIVITY, MAX_TURN)) 
         f.close()
         # defining starting point to detect lap
         start_pose = self.pose

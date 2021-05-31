@@ -10,9 +10,11 @@ import math
 
 
 NUM_LAPS = 3    # constant: number of laps
-SPEED = 0.5 
-TRESHOLD = 0.5    # constant: size lap beginning 
-KP = 0.6        # proportional constant
+SPEED = 0.4 
+TRESHOLD = 0.05    # constant: size lap beginning 
+KP = 0.9        # proportional constant
+MAX_TURN = 3.1
+E_SENSITIVITY = 0.05
 
 class ThymioController:
 
@@ -169,6 +171,15 @@ class ThymioController:
     
     def controller_commands(self):
         e = self.distance_left - self.distance_right
+        e = self.distance_left - self.distance_right
+        if abs(e) <= E_SENSITIVITY:
+            e = 0
+
+        angle = KP * e
+        if angle > MAX_TURN:
+            angle = MAX_TURN
+        if angle < -MAX_TURN:
+            angle = -MAX_TURN
         velocity = Twist(linear=Vector3(
                 SPEED,  
                 .0,
@@ -176,14 +187,15 @@ class ThymioController:
                 ),angular=Vector3(
                 .0,
                 .0,
-                KP * e))
+                angle))
 
         return velocity
 
     # TODO
     def run(self):
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/proportional_report.txt", 'a+') # "w+")
-        f.write("using speed = {}; constant = {} \r\n".format(SPEED, KP)) # TODO
+        f.write("using speed = {}; constant = {}; sensitivity = {}; maximum turn = {}  \r\n".format(
+            SPEED, KP, E_SENSITIVITY, MAX_TURN)) 
         f.close()
         # defining starting point to detect lap
         start_pose = self.pose
@@ -205,7 +217,6 @@ class ThymioController:
                     f.close()
                     self.stop()
                     rospy.signal_shutdown("unexpected crash")
-                    break;
 
             if self.calculate_distance(self.pose, start_pose) < TRESHOLD:
                 """if near starting point: write report once and reset"""

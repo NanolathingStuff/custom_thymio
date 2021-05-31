@@ -11,8 +11,8 @@ import math
 
 NUM_LAPS = 3    # constant: number of laps
 """more than ... and it crashes on the walls"""
-BANG_FUNCT = 0.35    # constant: how much to turn
-SPEED = 0.5 
+BANG_FUNCT = 0.45    # constant: how much to turn
+SPEED = 0.35 
 TRESHOLD = 0.5    # constant: size lap beginning 
 
 class ThymioController:

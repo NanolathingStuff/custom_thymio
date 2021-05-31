@@ -19,9 +19,12 @@ Controller list:
 Worlds list:
     - world_straight (world with a straight corridor directed 90 from the thymio)
     - straigth_test (world with a straight corridor directed as the thymio, walls are not at the same distance: used for test the sensors)
-    - circuit1 (a test cisrcuit world with random parts)
+    - circuit1 (a test cisrcuit world with random parts) DO NOT USE
     - circuit2 (a narrow loop circuit)
-    - circuit3 (circular circuit done with 2 left turns)
+    - circuit3 (circular circuit done with 2 right turns)
     
 edit worlds with: $ "gazebo path/to/file.world"
 test if the odometry lap-detector [209-219 in almost all cntrollers] works
+robot seems to go crazy if trns too fast or the curve is large
+Limit max turn because sometimes it turned to itself and becaume upside-down
+just lateral distances might not be sufficient?
