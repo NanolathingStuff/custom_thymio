@@ -12,7 +12,7 @@ import math
 NUM_LAPS = 3    # constant: number of laps
 SPEED = 0.4 
 TRESHOLD = 0.5    # constant: size lap beginning
-KD = 0.3        # derivative constant 
+KD = 0.5        # derivative constant 
 
 class ThymioController:
 
@@ -208,6 +208,10 @@ class ThymioController:
         start = rospy.get_rostime()
         #angleness = np.dot(self.proximity, np.array[1,2,0,-2,-1]/3)
 
+        # this should stop the robot and prevent it to start running before spawning
+        while start < 1:
+            start = rospy.get_rostime().secs
+        start = start -1
         # counter of how many times the loop has been executed
         slept = lap = 0 
         while not rospy.is_shutdown() and lap < NUM_LAPS:

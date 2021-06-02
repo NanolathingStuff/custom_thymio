@@ -10,13 +10,13 @@ import math
 
 # TODO https://github.com/alessandro-giusti/teaching-notebooks/blob/master/robotics/04%20closedloopcontrol.ipynb
 NUM_LAPS = 3    # constant: number of laps
-SPEED = 0.45 
+SPEED = 0.4 
 TRESHOLD = 0.5    # constant: size lap beginning 
-KP = 0.6        # proportional constant
-KD = 0.25        # derivative constant 
-KI = 0.15
-MAX_TURN = 1.4
-e_SENSITIVITY = 0.05
+KP = 0.4        # proportional constant
+KD = 0.45        # derivative constant 
+KI = 0.1
+MAX_TURN = 2.0
+E_SENSITIVITY = 0.02
 
 class ThymioController:
 
@@ -73,14 +73,14 @@ class ThymioController:
 
         self.distance_left = 1.0
         self.distance_right = 1.0
-        #this give constant value (float) of the distance fro the center
+        #this give constant value (float) of the distance from the wheell l
         self.range_left = rospy.Subscriber(
             self.name + '/wheel_laser/left',  # name of the topic
             Range,  # message type
             self.common_callback_left
         )
 
-        #this give constant value (float) of the distance fro the center
+        #this give constant value (float) of the distance from the wheell r
         self.range_right = rospy.Subscriber(
             self.name + '/wheel_laser/right',  # name of the topic
             Range,  # message type
@@ -155,6 +155,7 @@ class ThymioController:
             msg=self.name + ' (%.3f, %.3f, %.3f) ' % printable_pose  # message
         )
 
+# from here is my code
     def calculate_distance(self, new_position, old_position):
         """Calculate the distance between two Points (positions)."""
         x2 = new_position.position.x
@@ -167,7 +168,7 @@ class ThymioController:
     def write_report(self, lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, time):
         print("writing report")
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/PID_report.txt", 'a+') 
-        f.write("lap{} concluded in time {},{} from the start \r\n".format(lap, time.secs, time.nsecs))
+        f.write("lap{} concluded in time {} from the start \r\n".format(lap, time)) #modified
         f.write("Minimum distance left = {}, Maximum distance left = {} on lap{} \r\n".format(min_left_distance, max_left_distance, lap))
         f.write("Minimum distance right = {}, Maximum distance right = {} on lap{} \r\n".format(min_right_distance, max_right_distance, lap))
         f.close()
@@ -182,7 +183,7 @@ class ThymioController:
     
     def controller_commands(self):
         e = self.distance_left - self.distance_right
-        if abs(e) <= e_SENSITIVITY:
+        if abs(e) <= E_SENSITIVITY:
             e = 0
         dt = 1/10 # 1 / rate
 
@@ -197,7 +198,7 @@ class ThymioController:
             angle = MAX_TURN
         if angle < -MAX_TURN:
             angle = -MAX_TURN
-        rospy.loginfo("error: " + str(e) + " turning: " + str(angle) + "/" + str(KP * e + KD * derivative + KI * self.sum_e))
+        #rospy.loginfo("error: " + str(e) + " turning: " + str(angle) + "/" + str(KP * e + KD * derivative + KI * self.sum_e))
         velocity = Twist(linear=Vector3(
                 SPEED,  
                 .0,
@@ -206,15 +207,13 @@ class ThymioController:
                 .0,
                 .0,
                 angle))
-        # TODO
 
         return velocity
 
-    # TODO
     def run(self):
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/PID_report.txt", 'a+') # "w+")
         f.write("using speed = {}; KP, KI, KD = {}; sensitivity = {}; maximum turn = {} \r\n".format(
-            SPEED, KP, KI, KD, e_SENSITIVITY, MAX_TURN)) 
+            SPEED, KP, KI, KD, E_SENSITIVITY, MAX_TURN)) 
         f.close()
         # defining starting point to detect lap
         start_pose = self.pose
@@ -222,9 +221,12 @@ class ThymioController:
         """Controls the Thymio."""
         min_left_distance = min_right_distance = 50.0 # i don't know how to get max range of the sensor, so i harcode it here
         max_left_distance = max_right_distance = 0.0
-        start = rospy.get_rostime()
+        start = rospy.get_rostime().secs    # take jus seconds
         #angleness = np.dot(self.proximity, np.array[1,2,0,-2,-1]/3)
-
+        # this should stop the robot and prevent it to start running before spawning
+        while start < 1:
+            start = rospy.get_rostime().secs
+        start = start -1
         # counter of how many times the loop has been executed
         slept = lap = 0 
         while not rospy.is_shutdown() and lap < NUM_LAPS:
@@ -242,7 +244,7 @@ class ThymioController:
                 """if near starting point: write report once and reset"""
                 if not start_range:
                     start_range = True 
-                    self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime() - start)
+                    self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime().secs - start)
                     lap += 1
                     min_left_distance = min_right_distance = 50.0 # i don't know how to get max range of the sensor, so i harcode it here
                     max_left_distance = max_right_distance = 0.0         
@@ -260,6 +262,8 @@ class ThymioController:
             #rospy.loginfo("left: " + str(min_left_distance) + ' ; ' + str(max_left_distance) + " right: " + str(min_right_distance) +' ; ' + str(max_right_distance))
             #rospy.loginfo("lap: " + str(lap) + " Pose: " + self.name + ' (%.3f, %.3f, %.3f) ' % self.human_readable_pose2d(self.pose))
             #rospy.loginfo("lap: " + str(lap) + " distances: " + str(self.proximity)[1:-1])
+            rospy.loginfo("lap: " + str(lap) + " time: " + str(rospy.get_rostime().secs - start) + ' of ' + str(rospy.get_time()) + 
+                " from: " + str(start))
 
             # calcumlate max and mins
             if self.distance_left > max_left_distance:
@@ -274,7 +278,7 @@ class ThymioController:
             # sleep until next step
             self.rate.sleep()
         # out of the loop
-        self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime() - start)
+        self.write_report(lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, rospy.get_rostime().secs - start)
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/PID_report.txt", 'a+') 
         f.write(" \r\n")
         f.close()

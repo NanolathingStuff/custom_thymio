@@ -1,0 +1,10 @@
+lap1 concluded in time 893,350000000 
+Minimum distance left = 0.0, Maximum distance left = 2.8874595165252686 on lap1 
+Minimum distance right = 0.0, Maximum distance right = 8.703615188598633 on lap1 
+lap2 concluded in time 67,600000000 
+Minimum distance left = 0.39915117621421814, Maximum distance left = 2.888418436050415 on lap2 
+Minimum distance right = 0.2456793487071991, Maximum distance right = 8.65788459777832 on lap2 
+lap3 concluded in time 0,100000000 
+Minimum distance left = 0.9341522455215454, Maximum distance left = 0.9341522455215454 on lap3 
+Minimum distance right = 0.9035779237747192, Maximum distance right = 0.9035779237747192 on lap3 
+ 

@@ -1,0 +1,19 @@
+using speed = 0.5; constant = 0.2 
+lap0 concluded in time 0,0 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+using speed = 0.5; constant = 0.2 
+lap0 concluded in time 0,0 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; constant = 0.3 
+lap0 concluded in time 0,0 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; constant = 0.3 
+lap0 concluded in time 0,0 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 

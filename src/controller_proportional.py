@@ -191,7 +191,6 @@ class ThymioController:
 
         return velocity
 
-    # TODO
     def run(self):
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/proportional_report.txt", 'a+') # "w+")
         f.write("using speed = {}; constant = {}; sensitivity = {}; maximum turn = {}  \r\n".format(
@@ -206,6 +205,10 @@ class ThymioController:
         start = rospy.get_rostime()
         #angleness = np.dot(self.proximity, np.array[1,2,0,-2,-1]/3)
 
+        # this should stop the robot and prevent it to start running before spawning
+        while start < 1:
+            start = rospy.get_rostime().secs
+        start = start -1
         # counter of how many times the loop has been executed
         slept = lap = 0 
         while not rospy.is_shutdown() and lap < NUM_LAPS:

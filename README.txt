@@ -28,3 +28,6 @@ test if the odometry lap-detector [209-219 in almost all cntrollers] works
 robot seems to go crazy if trns too fast or the curve is large
 Limit max turn because sometimes it turned to itself and becaume upside-down
 just lateral distances might not be sufficient?
+
+TODO test roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
+
