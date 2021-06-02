@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-
+import os
 import rospy
 from nav_msgs.msg import Odometry
 from geometry_msgs.msg import Pose, Twist, Vector3
@@ -8,7 +8,7 @@ from sensor_msgs.msg import Range
 from math import sin, cos, atan2, pi
 import math
 
-
+# TODO https://github.com/alessandro-giusti/teaching-notebooks/blob/master/robotics/04%20closedloopcontrol.ipynb
 NUM_LAPS = 3    # constant: number of laps
 SPEED = 0.4 
 TRESHOLD = 0.05    # constant: size lap beginning 
@@ -264,6 +264,9 @@ class ThymioController:
         print("number of setted laps ({}) reached, press CTRL + C to exit".format(NUM_LAPS))
 
 if __name__ == '__main__':
+    # create report folder
+    if not os.path.exists('/home/usiusi/catkin_ws/src/custom_thymio/reports'):
+        os.mkdir('/home/usiusi/catkin_ws/src/custom_thymio/reports', mode= 0o777)
     controller = ThymioController()
 
     try:
