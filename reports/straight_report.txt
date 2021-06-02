@@ -1,2 +1,0 @@
-Minimum distance left = 0.9632166624069214, Maximum distance left = 1.8487718105316162
-Minimum distance right = 0.9760374426841736, Maximum distance right = 2.2046611309051514

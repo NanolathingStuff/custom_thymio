@@ -9,12 +9,12 @@ from math import pi
 import math
 
 # TODO https://github.com/alessandro-giusti/teaching-notebooks/blob/master/robotics/04%20closedloopcontrol.ipynb
-NUM_LAPS = 3    # constant: number of laps
+NUM_LAPS = 4    # constant: number of laps
 SPEED = 0.4 
 TRESHOLD = 0.5    # constant: size lap beginning 
 KP = 0.4        # proportional constant
-KD = 0.45        # derivative constant 
-KI = 0.1
+KD = 0.4        # derivative constant 
+KI = 0.15
 MAX_TURN = 2.0
 E_SENSITIVITY = 0.02
 
@@ -262,8 +262,7 @@ class ThymioController:
             #rospy.loginfo("left: " + str(min_left_distance) + ' ; ' + str(max_left_distance) + " right: " + str(min_right_distance) +' ; ' + str(max_right_distance))
             #rospy.loginfo("lap: " + str(lap) + " Pose: " + self.name + ' (%.3f, %.3f, %.3f) ' % self.human_readable_pose2d(self.pose))
             #rospy.loginfo("lap: " + str(lap) + " distances: " + str(self.proximity)[1:-1])
-            rospy.loginfo("lap: " + str(lap) + " time: " + str(rospy.get_rostime().secs - start) + ' of ' + str(rospy.get_time()) + 
-                " from: " + str(start))
+            #rospy.loginfo("lap: " + str(lap) + " time: " + str(rospy.get_rostime().secs - start) + ' of ' + str(rospy.get_time()) + " from: " + str(start))
 
             # calcumlate max and mins
             if self.distance_left > max_left_distance:

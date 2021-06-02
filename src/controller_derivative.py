@@ -209,9 +209,9 @@ class ThymioController:
         #angleness = np.dot(self.proximity, np.array[1,2,0,-2,-1]/3)
 
         # this should stop the robot and prevent it to start running before spawning
-        while start < 1:
-            start = rospy.get_rostime().secs
-        start = start -1
+        while start.secs < 1:
+            start = rospy.get_rostime()
+        start.secs = start.secs - 1
         # counter of how many times the loop has been executed
         slept = lap = 0 
         while not rospy.is_shutdown() and lap < NUM_LAPS:
@@ -246,7 +246,7 @@ class ThymioController:
             #rospy.loginfo("left: " + str(min_left_distance) + ' ; ' + str(max_left_distance) + " right: " + str(min_right_distance) +' ; ' + str(max_right_distance))
             #rospy.loginfo("lap: " + str(lap) + " Pose: " + self.name + ' (%.3f, %.3f, %.3f) ' % self.human_readable_pose2d(self.pose))
             #rospy.loginfo("lap: " + str(lap) + " distances: " + str(self.proximity)[1:-1])
-
+            #rospy.loginfo("lap: " + str(lap) + " time: " + str(rospy.get_rostime() - start) + ' of ' + str(rospy.get_time()) + " from: " + str(start.secs))
             # calcumlate max and mins
             if self.distance_left > max_left_distance:
                 max_left_distance = self.distance_left
