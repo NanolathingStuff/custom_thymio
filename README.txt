@@ -1,11 +1,11 @@
-https://github.com/jeguzzi/ros-aseba/blob/client/thymio_description/urdf/base.urdf.xacro#L66 is required
-be also sure to replace urdf/base.urdf.xacro on that repository with the one coming with this repo
+To clone	https://github.com/jeguzzi/ros-aseba.git	is required
+be also sure to replace "ros-aseba/thymio_description/urdf/base.urdf.xacro" on that repository with the "urdf/base.urdf.xacro" coming with this repo
 
-remember to use: $"chmod 777 -R *" (and eventually "catkin_make") in source folder in order to be able to use the launchers
+remember to use: $"chmod 777 -R *" (and eventually "catkin_make" and/or "~/.bashrc file") in source folder in order to be able to use the launchers
 
 Launch with:
 roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=$WORLD_NAME type:=$CONTROLLER_NAME.py 
-es CONTROLLER_NAME: controller_straight.py ; WORLD_NAME: circuit1
+es CONTROLLER_NAME: controller_straight.py; WORLD_NAME: circuit1
 
 examples: 
         roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_straight.py
@@ -22,12 +22,12 @@ Worlds list:
     - circuit1 (a test cisrcuit world with random parts) DO NOT USE
     - circuit2 (a narrow loop circuit)
     - circuit3 (circular circuit done with 2 right turns)
+    - circuit3 (circular circuit that seems to let the PID finish every lap)
     
 edit worlds with: $ "gazebo path/to/file.world"
-test if the odometry lap-detector [209-219 in almost all cntrollers] works
 robot seems to go crazy if trns too fast or the curve is large
 Limit max turn because sometimes it turned to itself and becaume upside-down
 just lateral distances might not be sufficient?
 
-TODO test roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
+test roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
 
