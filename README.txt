@@ -1,5 +1,7 @@
 To clone	https://github.com/jeguzzi/ros-aseba.git	is required
-be also sure to replace "ros-aseba/thymio_description/urdf/base.urdf.xacro" on that repository with the "urdf/base.urdf.xacro" coming with this repo
+replace the file "ros-aseba/thymio_description/urdf/base.urdf.xacro", contained in the repository cloned according to the instructions in the previous line with the file "urdf/base.urdf.xacro" contained in our repository
+src/ros-aseba/thymio_description/urdf$ chmod 777 base.urdf.xacro 
+
 
 remember to use: $"chmod 777 -R *" (and eventually "catkin_make" and/or "~/.bashrc file") in source folder in order to be able to use the launchers
 
