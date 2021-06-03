@@ -165,6 +165,7 @@ class ThymioController:
         f.write("Minimum distance left = {}, Maximum distance left = {} on lap{} \r\n".format(min_left_distance, max_left_distance, lap))
         f.write("Minimum distance right = {}, Maximum distance right = {} on lap{} \r\n".format(min_right_distance, max_right_distance, lap))
         f.close()
+        rospy.loginfo("Lap "+str(lap) + ' / ' + str(NUM_LAPS))
     
     def stop(self):
         """Stops the robot."""
@@ -211,7 +212,7 @@ class ThymioController:
         start.secs = start.secs - 1
         # counter of how many times the loop has been executed
         slept = lap = 0 
-        while not rospy.is_shutdown() and lap < NUM_LAPS:
+        while not rospy.is_shutdown() and lap <= NUM_LAPS:
             #detect crashes
             for proximity in self.proximity:
                 if proximity < 0.4:

@@ -9,13 +9,13 @@ from math import pi
 import math
 
 
-NUM_LAPS = 4    # constant: number of laps
+NUM_LAPS = 20    # constant: number of laps
 SPEED = 0.4 
 TRESHOLD = 0.5    # constant: size lap beginning 
-KP = 0.45        # proportional constant
-KD = 0.4        # derivative constant 
-KI = 0.15
-MAX_TURN = 2.4
+KP = 0.6        # proportional constant
+KD = 0.404        # derivative constant 
+KI = 0.1
+MAX_TURN = 2.2
 E_SENSITIVITY = 0.04
 
 class ThymioController:
@@ -172,6 +172,7 @@ class ThymioController:
         f.write("Minimum distance left = {}, Maximum distance left = {} on lap{} \r\n".format(min_left_distance, max_left_distance, lap))
         f.write("Minimum distance right = {}, Maximum distance right = {} on lap{} \r\n".format(min_right_distance, max_right_distance, lap))
         f.close()
+        rospy.loginfo("Lap "+str(lap) + ' / ' + str(NUM_LAPS))
     
     def stop(self):
         """Stops the robot."""
@@ -212,7 +213,7 @@ class ThymioController:
 
     def run(self):
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/PID_report.txt", 'a+') # "w+")
-        f.write("using speed = {}; KP, KI, KD = {}; sensitivity = {}; maximum turn = {} \r\n".format(
+        f.write("using speed = {}; KP = {}, KI = {}, KD = {}; sensitivity = {}; maximum turn = {} \r\n".format(
             SPEED, KP, KI, KD, E_SENSITIVITY, MAX_TURN)) 
         f.close()
         # defining starting point to detect lap
@@ -222,14 +223,14 @@ class ThymioController:
         min_left_distance = min_right_distance = 50.0 # i don't know how to get max range of the sensor, so i harcode it here
         max_left_distance = max_right_distance = 0.0
         start = rospy.get_rostime().secs    # take jus seconds
-        #angleness = np.dot(self.proximity, np.array[1,2,0,-2,-1]/3)
+        
         # this should stop the robot and prevent it to start running before spawning
         while start < 1:
             start = rospy.get_rostime().secs
         start = start -1
         # counter of how many times the loop has been executed
         slept = lap = 0 
-        while not rospy.is_shutdown() and lap < NUM_LAPS:
+        while not rospy.is_shutdown() and lap <= NUM_LAPS:
             #detect crashes
             for proximity in self.proximity:
                 if proximity < 0.4: #sensor result during crashes around 0.28

@@ -33,3 +33,7 @@ just lateral distances might not be sufficient?
 
 test roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
 
+other test might be made with a pair of distace sensors (one already implemented and one angled)
+copy the file "urdf/my_robot.xacro" contained in our repository replace the file "ros-aseba/thymio_description/urdf/base.urdf.xacro", contained in the repository cloned (you obiouvsly need to rename the file my_robot.urdf to base.urdf.xacro)
+src/ros-aseba/thymio_description/urdf$ chmod 777 base.urdf.xacro 
+for now, only controller_proportional2.py support it

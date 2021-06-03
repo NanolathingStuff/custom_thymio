@@ -1,0 +1,180 @@
+using speed = 0.4; KP = 0.28, KI = 0.1, KD = 0.3; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; KP = 0.28, KI = 0.1, KD = 0.35; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; KP = 0.32, KI = 0.1, KD = 0.35; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; KP = 0.32, KI = 0.1, KD = 0.31; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; KP = 0.34, KI = 0.1, KD = 0.38; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.13897347450256348, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.1060756966471672, Maximum distance right = 1.0 on lap1 
+CRASHED! 
+using speed = 0.4; KP = 0.34, KI = 0.1, KD = 0.44; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.12439139932394028, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.1520300805568695, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 105 from the start 
+Minimum distance left = 0.08235108107328415, Maximum distance left = 0.7424312233924866 on lap2 
+Minimum distance right = 0.12650266289710999, Maximum distance right = 0.8373714685440063 on lap2 
+lap3 concluded in time 105 from the start 
+Minimum distance left = 0.6666102409362793, Maximum distance left = 0.6666102409362793 on lap3 
+Minimum distance right = 0.23660226166248322, Maximum distance right = 0.23660226166248322 on lap3 
+ 
+using speed = 0.4; KP = 0.38, KI = 0.1, KD = 0.44; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.17933250963687897, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.18495401740074158, Maximum distance right = 1.0 on lap1 
+using speed = 0.4; KP = 0.4, KI = 0.1, KD = 0.44; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.1937536597251892, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.21253705024719238, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 104 from the start 
+Minimum distance left = 0.1829681545495987, Maximum distance left = 0.7280941009521484 on lap2 
+Minimum distance right = 0.22370755672454834, Maximum distance right = 0.8090158104896545 on lap2 
+lap3 concluded in time 104 from the start 
+Minimum distance left = 0.5991061329841614, Maximum distance left = 0.5991061329841614 on lap3 
+Minimum distance right = 0.30022943019866943, Maximum distance right = 0.30022943019866943 on lap3 
+ 
+using speed = 0.4; KP = 0.5, KI = 0.1, KD = 0.5; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.15876835584640503, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.18004493415355682, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 104 from the start 
+Minimum distance left = 0.1554982215166092, Maximum distance left = 0.7508015632629395 on lap2 
+Minimum distance right = 0.18846945464611053, Maximum distance right = 0.7267823219299316 on lap2 
+lap3 concluded in time 104 from the start 
+Minimum distance left = 0.5531535744667053, Maximum distance left = 0.5531535744667053 on lap3 
+Minimum distance right = 0.347289502620697, Maximum distance right = 0.347289502620697 on lap3 
+ 
+using speed = 0.4; KP = 0.5, KI = 0.1, KD = 0.44; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.09776320308446884, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.10821469873189926, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 104 from the start 
+Minimum distance left = 0.1368112564086914, Maximum distance left = 0.7660041451454163 on lap2 
+Minimum distance right = 0.17575109004974365, Maximum distance right = 0.7383556365966797 on lap2 
+lap3 concluded in time 104 from the start 
+Minimum distance left = 0.5554041862487793, Maximum distance left = 0.5554041862487793 on lap3 
+Minimum distance right = 0.3438016474246979, Maximum distance right = 0.3438016474246979 on lap3 
+ 
+using speed = 0.4; KP = 0.54, KI = 0.1, KD = 0.404; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.08434738963842392, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.10497995465993881, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 105 from the start 
+Minimum distance left = 0.10579463094472885, Maximum distance left = 0.802741527557373 on lap2 
+Minimum distance right = 0.14718273282051086, Maximum distance right = 0.7676994204521179 on lap2 
+lap3 concluded in time 105 from the start 
+Minimum distance left = 0.5666895508766174, Maximum distance left = 0.5666895508766174 on lap3 
+Minimum distance right = 0.3421933352947235, Maximum distance right = 0.3421933352947235 on lap3 
+ 
+using speed = 0.4; KP = 0.7, KI = 0.1, KD = 0.404; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 52 from the start 
+Minimum distance left = 0.20618997514247894, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.17208358645439148, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 105 from the start 
+Minimum distance left = 0.2282395362854004, Maximum distance left = 0.7197325825691223 on lap2 
+Minimum distance right = 0.1935267299413681, Maximum distance right = 0.7544016242027283 on lap2 
+lap3 concluded in time 105 from the start 
+Minimum distance left = 0.6402174234390259, Maximum distance left = 0.6402174234390259 on lap3 
+Minimum distance right = 0.27829495072364807, Maximum distance right = 0.27829495072364807 on lap3 
+ 
+using speed = 0.4; KP = 0.7, KI = 0.1, KD = 0.2; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+CRASHED! 
+using speed = 0.4; KP = 0.6, KI = 0.1, KD = 0.404; sensitivity = 0.04; maximum turn = 2.2 
+lap0 concluded in time 1 from the start 
+Minimum distance left = 50.0, Maximum distance left = 0.0 on lap0 
+Minimum distance right = 50.0, Maximum distance right = 0.0 on lap0 
+lap1 concluded in time 53 from the start 
+Minimum distance left = 0.10197330266237259, Maximum distance left = 1.0 on lap1 
+Minimum distance right = 0.10675831139087677, Maximum distance right = 1.0 on lap1 
+lap2 concluded in time 105 from the start 
+Minimum distance left = 0.12170440703630447, Maximum distance left = 0.7541310787200928 on lap2 
+Minimum distance right = 0.13730745017528534, Maximum distance right = 0.7882435321807861 on lap2 
+lap3 concluded in time 158 from the start 
+Minimum distance left = 0.11871539801359177, Maximum distance left = 0.756085216999054 on lap3 
+Minimum distance right = 0.15413814783096313, Maximum distance right = 0.7635607123374939 on lap3 
+lap4 concluded in time 211 from the start 
+Minimum distance left = 0.10595905035734177, Maximum distance left = 0.7476723194122314 on lap4 
+Minimum distance right = 0.11167093366384506, Maximum distance right = 0.7835646867752075 on lap4 
+lap5 concluded in time 264 from the start 
+Minimum distance left = 0.09076818823814392, Maximum distance left = 0.7582426071166992 on lap5 
+Minimum distance right = 0.08826727420091629, Maximum distance right = 0.7841798067092896 on lap5 
+lap6 concluded in time 317 from the start 
+Minimum distance left = 0.09460257738828659, Maximum distance left = 0.784492552280426 on lap6 
+Minimum distance right = 0.09432107955217361, Maximum distance right = 0.7994459271430969 on lap6 
+lap7 concluded in time 369 from the start 
+Minimum distance left = 0.10261394083499908, Maximum distance left = 0.7548022866249084 on lap7 
+Minimum distance right = 0.11316563189029694, Maximum distance right = 0.7795299887657166 on lap7 
+lap8 concluded in time 422 from the start 
+Minimum distance left = 0.10241183638572693, Maximum distance left = 0.7828497886657715 on lap8 
+Minimum distance right = 0.1087641716003418, Maximum distance right = 0.7866677045822144 on lap8 
+lap9 concluded in time 475 from the start 
+Minimum distance left = 0.11688415706157684, Maximum distance left = 0.7461994886398315 on lap9 
+Minimum distance right = 0.13158297538757324, Maximum distance right = 0.7732239961624146 on lap9 
+lap10 concluded in time 527 from the start 
+Minimum distance left = 0.11331260949373245, Maximum distance left = 0.7525764107704163 on lap10 
+Minimum distance right = 0.13507115840911865, Maximum distance right = 0.7741619348526001 on lap10 
+lap11 concluded in time 580 from the start 
+Minimum distance left = 0.12318558245897293, Maximum distance left = 0.7446561455726624 on lap11 
+Minimum distance right = 0.140548974275589, Maximum distance right = 0.7766444683074951 on lap11 
+lap12 concluded in time 633 from the start 
+Minimum distance left = 0.10566108673810959, Maximum distance left = 0.7802635431289673 on lap12 
+Minimum distance right = 0.10489197075366974, Maximum distance right = 0.7930468320846558 on lap12 
+lap13 concluded in time 686 from the start 
+Minimum distance left = 0.11105887591838837, Maximum distance left = 0.7623574733734131 on lap13 
+Minimum distance right = 0.13082674145698547, Maximum distance right = 0.7895351648330688 on lap13 
+lap14 concluded in time 738 from the start 
+Minimum distance left = 0.10589979588985443, Maximum distance left = 0.7547218799591064 on lap14 
+Minimum distance right = 0.12566721439361572, Maximum distance right = 0.7694920301437378 on lap14 
+lap15 concluded in time 792 from the start 
+Minimum distance left = 0.1057325154542923, Maximum distance left = 0.7613435983657837 on lap15 
+Minimum distance right = 0.10182458162307739, Maximum distance right = 0.7937702536582947 on lap15 
+lap16 concluded in time 845 from the start 
+Minimum distance left = 0.09778331965208054, Maximum distance left = 0.8121253848075867 on lap16 
+Minimum distance right = 0.08697294443845749, Maximum distance right = 0.8173443078994751 on lap16 
+lap17 concluded in time 898 from the start 
+Minimum distance left = 0.11632930487394333, Maximum distance left = 0.755283772945404 on lap17 
+Minimum distance right = 0.1151488721370697, Maximum distance right = 0.7924286723136902 on lap17 
+CRASHED! 

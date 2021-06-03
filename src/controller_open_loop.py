@@ -11,7 +11,7 @@ controller tougth to work on the circuit3 in launch/worlds folder
 roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=circuit3 type:=controller_open_loop.py
 """
 
-NUM_LAPS = 3
+NUM_LAPS = 10
 
 class ThymioController:
 

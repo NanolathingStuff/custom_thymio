@@ -1,0 +1,48 @@
+lap1 concluded in time 67,500000000 from the start 
+Minimum distance left = 0.0, Maximum distance left = 2.824535846710205 on lap1 
+Minimum distance right = 0.0, Maximum distance right = 8.666853904724121 on lap1 
+lap2 concluded in time 135,100000000 from the start 
+Minimum distance left = 0.33362799882888794, Maximum distance left = 1.87093985080719 on lap2 
+Minimum distance right = 0.22060133516788483, Maximum distance right = 8.62271499633789 on lap2 
+lap3 concluded in time 135,200000000 from the start 
+Minimum distance left = 0.9312281608581543, Maximum distance left = 0.9312281608581543 on lap3 
+Minimum distance right = 0.9071254134178162, Maximum distance right = 0.9071254134178162 on lap3 
+ 
+lap1 concluded in time 67,500000000 from the start 
+Minimum distance left = 47.32177734375, Maximum distance left = 50.0 on lap1 
+Minimum distance right = 50.0, Maximum distance right = 50.0 on lap1 
+lap2 concluded in time 135,100000000 from the start 
+Minimum distance left = 50.0, Maximum distance left = 50.0 on lap2 
+Minimum distance right = 50.0, Maximum distance right = 50.0 on lap2 
+lap3 concluded in time 135,200000000 from the start 
+Minimum distance left = 50.0, Maximum distance left = 50.0 on lap3 
+Minimum distance right = 50.0, Maximum distance right = 50.0 on lap3 
+ 
+lap1 concluded in time 67,500000000 from the start 
+Minimum distance left = 0.0, Maximum distance left = 2.8088719844818115 on lap1 
+Minimum distance right = 0.0, Maximum distance right = 8.662291526794434 on lap1 
+lap2 concluded in time 135,100000000 from the start 
+Minimum distance left = 0.3376674950122833, Maximum distance left = 2.825096845626831 on lap2 
+Minimum distance right = 0.2182120382785797, Maximum distance right = 8.61818790435791 on lap2 
+lap3 concluded in time 202,700000000 from the start 
+Minimum distance left = 0.3239164352416992, Maximum distance left = 2.8041090965270996 on lap3 
+Minimum distance right = 0.17631885409355164, Maximum distance right = 8.573956489562988 on lap3 
+lap4 concluded in time 270,300000000 from the start 
+Minimum distance left = 0.3184705078601837, Maximum distance left = 2.8274123668670654 on lap4 
+Minimum distance right = 0.13490864634513855, Maximum distance right = 8.527701377868652 on lap4 
+lap5 concluded in time 270,400000000 from the start 
+Minimum distance left = 0.9366546869277954, Maximum distance left = 0.9366546869277954 on lap5 
+Minimum distance right = 0.9010912775993347, Maximum distance right = 0.9010912775993347 on lap5 
+ 
+lap1 concluded in time 67,500000000 from the start 
+Minimum distance left = 0.0, Maximum distance left = 2.8065683841705322 on lap1 
+Minimum distance right = 0.0, Maximum distance right = 8.616072654724121 on lap1 
+lap2 concluded in time 135,100000000 from the start 
+Minimum distance left = 0.23737278580665588, Maximum distance left = 2.6870837211608887 on lap2 
+Minimum distance right = 0.10338906198740005, Maximum distance right = 5.411046028137207 on lap2 
+lap3 concluded in time 202,700000000 from the start 
+Minimum distance left = 0.250426709651947, Maximum distance left = 2.661402702331543 on lap3 
+Minimum distance right = 0.046952586621046066, Maximum distance right = 8.472118377685547 on lap3 
+lap4 concluded in time 270,300000000 from the start 
+Minimum distance left = 0.11895362287759781, Maximum distance left = 1.8781782388687134 on lap4 
+Minimum distance right = 0.011107119731605053, Maximum distance right = 8.248577117919922 on lap4 

@@ -7,6 +7,7 @@ from tf.transformations import euler_from_quaternion
 from sensor_msgs.msg import Range
 from math import sin, cos, atan2, pi
 import math
+import statistics 
 
 # TODO https://github.com/alessandro-giusti/teaching-notebooks/blob/master/robotics/04%20closedloopcontrol.ipynb
 NUM_LAPS = 3    # constant: number of laps
@@ -60,21 +61,28 @@ class ThymioController:
         self.directions = ['center_left', 'center', 'center_right']
         self.proximity = [1.0, 1.0, 1.0]
 
+        self.lefts = ['left', 'left_angled']
+        self.rights = ['right', 'right_angled']
+        self.distances_left = [1.0, 1.0]
+        self.distances_right = [1.0, 1.0]
+
         self.distance_left = 1.0
         self.distance_right = 1.0
-        #this give constant value (float) of the distance fro the center
-        self.range_left = rospy.Subscriber(
-            self.name + '/wheel_laser/left',  # name of the topic
-            Range,  # message type
-            self.common_callback_left
-        )
+        #this give constant value (float) of the distance from the left
+        for direction in self.lefts:
+            rospy.Subscriber(
+                self.name + '/wheel_laser/' + direction,  # name of the topic
+                Range,  # message type
+                self.common_callback_left,  # function that handles incoming messages
+                callback_args=direction)
 
-        #this give constant value (float) of the distance fro the center
-        self.range_right = rospy.Subscriber(
-            self.name + '/wheel_laser/right',  # name of the topic
-            Range,  # message type
-            self.common_callback_right
-        )
+        for direction in self.rights:
+            rospy.Subscriber(
+                self.name + '/wheel_laser/' + direction,  # name of the topic
+                Range,  # message type
+                self.common_callback_right,  # function that handles incoming messages
+                callback_args=direction)
+
         #create proximity subscribers
         for direction in self.directions:
             rospy.Subscriber(
@@ -86,27 +94,14 @@ class ThymioController:
     def update_proximity(self, data, direction):
         index = self.directions.index(direction)
         self.proximity[index] = round(data.range, 3) / 0.12
+ 
+    def common_callback_left(self, data, direction):
+        index = self.lefts.index(direction)
+        self.distances_left[index] = round(data.range, 4)
 
-    def common_callback_left(self,msg):
-
-        input_message_type = str(msg._type)
-
-        rospy.logdebug("msg._type ==>"+input_message_type)
-        #rospy.loginfo("type(msg)"+str(type(msg)))
-
-        if input_message_type == "sensor_msgs/Range":
-            self.distance_left = msg.range
-
-    def common_callback_right(self,msg):
-
-        input_message_type = str(msg._type)
-
-        rospy.logdebug("msg._type ==>"+input_message_type)
-        #rospy.loginfo("type(msg)"+str(type(msg)))
-
-        if input_message_type == "sensor_msgs/Range":
-            #rospy.loginfo("sub_laserscan called me, with type msg==>"+input_message_type)
-            self.distance_right = msg.range
+    def common_callback_right(self, data, direction):
+        index = self.rights.index(direction)
+        self.distances_right[index] = round(data.range, 4)
 
     def human_readable_pose2d(self, pose):
         """Converts pose message to a human readable pose tuple."""
@@ -153,6 +148,8 @@ class ThymioController:
         dist = math.hypot(x2 - x1, y2 - y1)
         return dist
 
+    # MY Code
+
     def write_report(self, lap, min_left_distance, min_right_distance, max_left_distance, max_right_distance, time):
         print("writing report")
         f = open("/home/usiusi/catkin_ws/src/custom_thymio/reports/proportional_report.txt", 'a+') 
@@ -197,6 +194,8 @@ class ThymioController:
         f.write("using speed = {}; constant = {}; sensitivity = {}; maximum turn = {}  \r\n".format(
             SPEED, KP, E_SENSITIVITY, MAX_TURN)) 
         f.close()
+        self.distance_right = statistics.fmean(self.distances_right) 
+        self.distance_left = statistics.fmean(self.distances_left) 
         # defining starting point to detect lap
         start_pose = self.pose
         start_range = False
@@ -221,6 +220,9 @@ class ThymioController:
                     f.close()
                     self.stop()
                     rospy.signal_shutdown("unexpected crash")
+
+            self.distance_right = statistics.fmean(self.distances_right) 
+            self.distance_left = statistics.fmean(self.distances_left) 
 
             if self.calculate_distance(self.pose, start_pose) < TRESHOLD:
                 """if near starting point: write report once and reset"""
