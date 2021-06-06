@@ -27,13 +27,13 @@ Worlds list:
     - circuit3 (circular circuit that seems to let the PID finish every lap)
     
 edit worlds with: $ "gazebo path/to/file.world"
-robot seems to go crazy if trns too fast or the curve is large
+robot seems to go crazy if turns too fast or the curve is large
 Limit max turn because sometimes it turned to itself and becaume upside-down
-just lateral distances might not be sufficient?
+just lateral distances might not be sufficient? --> fixed with second xacro file (see below)
 
-test roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
+test sensors with $ roslaunch custom_thymio racing_thymio_gazebo.launch name:=thymio10 world:=straight_test type:=controller_PID.py
 
-other test might be made with a pair of distace sensors (one already implemented and one angled)
+Other test might be made with a pair of distace sensors (one already implemented and one angled):
 copy the file "urdf/my_robot.xacro" contained in our repository replace the file "ros-aseba/thymio_description/urdf/base.urdf.xacro", contained in the repository cloned (you obiouvsly need to rename the file my_robot.urdf to base.urdf.xacro)
 src/ros-aseba/thymio_description/urdf$ chmod 777 base.urdf.xacro 
-for now, only controller_proportional2.py support it
+for now, only controller_proportional2.py supports it
